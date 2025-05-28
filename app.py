@@ -3,7 +3,6 @@ import os
 import requests
 from dotenv import load_dotenv
 
-load_dotenv()
 
 API_KEY = ("7a8b4fb5-63d2-40be-ad09-ebc85ce91de7")
 API_URL = "https://api.cloudmersive.com/validate/address/parse"
