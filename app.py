@@ -3,15 +3,19 @@ import os
 import requests
 from dotenv import load_dotenv
 
-load_dotenv()
 
 API_KEY = "7a8b4fb5-63d2-40be-ad09-ebc85ce91de7"
 API_URL = "https://api.cloudmersive.com/validate/address/street-address"
 
 def parse_input_address(input_text: str) -> dict:
     """
+<<<<<<< HEAD
     Parse input text into address components.
     Basic parsing - in real world, you might want to use more sophisticated parsing.
+=======
+    Parse unstructured address text into a structured format using Cloudmersive API.
+    Only returns relevant address fields.
+>>>>>>> 8ce7638c06a4ae50adc4b47eb92714d830bbf476
     """
     parts = input_text.split(',')
     address_parts = {
@@ -99,3 +103,24 @@ def validate_address(input_text: str) -> dict:
 # Test the function with a sample address
 print(validate_address("Barbaros Bulvarı No:145, Beşiktaş, İstanbul, 34349, Turkey"))
 
+<<<<<<< HEAD
+=======
+    if response.status_code == 200:
+        data = response.json()
+
+        # Örnek olarak sadece bazı önemli alanları döndürüyoruz:
+        return {
+            "Successful": data.get("Successful"),
+            "Building": data.get("Building"),
+            "StreetNumber": data.get("StreetNumber"),
+            "Street": data.get("Street"),
+            "City": data.get("City"),
+            "StateOrProvince": data.get("StateOrProvince"),
+            "PostalCode": data.get("PostalCode"),
+            "CountryFullName": data.get("CountryFullName"),
+            "ISOTwoLetterCode": data.get("ISOTwoLetterCode"),
+        }
+
+    else:
+        return {"error": f"API request failed with status code {response.status_code}"}
+>>>>>>> 8ce7638c06a4ae50adc4b47eb92714d830bbf476
