@@ -1,16 +1,15 @@
-### server.py
 from mcp.server.fastmcp import FastMCP
-from app import parse_address
+from app import validate_address
 
-# Initialize MCP server
-mcp = FastMCP("address-parser-mcp")
+# MCP sunucusunu başlat
+mcp = FastMCP("address-validate-mcp")
 
 @mcp.tool()
-async def parse_unstructured_address(input_text: str) -> dict:
+async def validate_address_tool(input_text: str) -> dict:
     """
-    Parse an unstructured input address string.
+    Validate an address string and return if it's valid or not.
     """
-    result = parse_address(input_text)
+    result = validate_address(input_text)
     return result
 
 if __name__ == "__main__":
