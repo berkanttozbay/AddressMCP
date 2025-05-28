@@ -1,15 +1,15 @@
-### server.py
 from mcp.server.fastmcp import FastMCP
 from app import parse_address
 
-# Initialize MCP server
-mcp = FastMCP("address-parser-mcp")
+# MCP sunucusunu başlat
+mcp = FastMCP("address-parse-mcp")
 
 @mcp.tool()
-async def parse_unstructured_address(input_text: str) -> dict:
+async def parse_address_tool(input_text: str) -> dict:
     """
-    Parse an unstructured input address string.
+    Parse an unstructured address string into structured components.
     """
+    # parse_address fonksiyonu senkron, await yok
     result = parse_address(input_text)
     return result
 
