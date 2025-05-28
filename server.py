@@ -1,27 +1,25 @@
 from mcp.server.fastmcp import FastMCP
 from app import validate_address
 
-# MCP sunucusunu başlat
-<<<<<<< HEAD
-mcp = FastMCP("address-validate-mcp")
+# Initialize MCP server
+mcp = FastMCP("address-validator-mcp")
 
 @mcp.tool()
-async def validate_address_tool(input_text: str) -> dict:
+async def validate_address_tool(address: str) -> dict:
     """
-    Validate an address string and return if it's valid or not.
+    Validate an address and get its coordinates.
+    
+    Args:
+        address (str): Address string in format "Street, City, State, PostalCode, Country"
+        
+    Returns:
+        dict: Validation results containing:
+            - is_valid: Whether the address is valid
+            - coordinates: Latitude and longitude if valid
+            - input_address: Parsed address components
     """
-    result = validate_address(input_text)
-=======
-mcp = FastMCP("address-parse-mcp")
-
-@mcp.tool()
-async def parse_address_tool(input_text: str) -> dict:
-    """
-    Parse an unstructured address string into structured components.
-    """
-    # parse_address fonksiyonu senkron, await yok
-    result = parse_address(input_text)
->>>>>>> 8ce7638c06a4ae50adc4b47eb92714d830bbf476
+    # Call the function from app.py (no await since validate_address is sync)
+    result = validate_address(address)
     return result
 
 if __name__ == "__main__":
